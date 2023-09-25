@@ -68,8 +68,7 @@ let image2 = document.querySelector('section img:nth-child(2)');
 console.log({pizzaContainer,resultButton,image1,image2});
 
 let clicks = 0;
-let maxAttemptAllowed = 10;
-console.log(clicks, maxAttemptAllowed);
+let maxAttemptsAllowed = 10;
 Pizza.allPizzasArray = [];
 
 
@@ -119,10 +118,50 @@ function renderPizzas(){
 
 }
 //add event handler for when we click on the images/ then remove event listener
+function handlePizzaClick(event){
+  console.log('proof of life!',event);
+  //enforces that we click on an image.. not just the section.
+  if(event.target === pizzaContainer){
+    alert('Please click on an image!');
+  }
+  clicks++;
+  //clicks = clicks + 1;
+  let clickPizza = event.target.alt;
+  console.log('pizza name:',clickPizza);
+  for(let i = 0; i < Pizza.allPizzasArray.length; i++){
+    if( clickPizza === Pizza.allPizzasArray[i].name){
+      //to update individual click count.
+      Pizza.allPizzasArray[i].click++;
+      break;
+    }//closes if statement
+  }//closes for loop
 
+  //what is our max clicks are we done
+  if(clicks === maxAttemptsAllowed){
+    pizzaContainer.removeEventListener('click', handlePizzaClick);
+    //turn on the results button event listener
+    resultButton.addEventListener('click', renderResults);
+    //adding a css class in our js
+    pizzaContainer.className = 'no-voting';
+  } else {
+    //if were not done
+    renderPizzas();
+  }
+}
 //render the results of the clicking/voting totals
 
+function renderResults(){
+  console.log('proof of life in the render results');
+  let ul = document.querySelector('ul');
 
+  //lets make some li's in a for loop and give them data
+  for(let i = 0; i < Pizza.allPizzasArray.length; i++){
+    let li = document.createElement('li');
+    // li.textContent = pizzaName had views and was click on times
+    li.textContent = `${Pizza.allPizzasArray[i].name} had ${Pizza.allPizzasArray[i].views} views and was click on ${Pizza.allPizzasArray[i].click} times`;
+    ul.appendChild(li);
+  }
+}
 
 
 console.log(Pizza.allPizzasArray);
@@ -135,3 +174,7 @@ new Pizza('Detroit Style', 'assets/images/detroitPizza.jpg');
 new Pizza('Papa Vito\'s Thin', 'assets/images/mwDeluxePizzaThinCrust.jpg');
 new Pizza('New York Thin', 'assets/images/newYorkPizza.jpg');
 new Pizza('Shot Gun Dans Pizza', 'assets/images/sgDansHtossedMeatLovPizza.jpg');
+
+
+renderPizzas();
+pizzaContainer.addEventListener('click', handlePizzaClick);
