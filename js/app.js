@@ -2,7 +2,7 @@
 console.log('app file is connected');
 
 /*
-  Practice domain modeling by planning out an app w that allows users to choose their favorite between two pizzas
+  Practice domain modeling by planning out an app  that allows users to choose their favorite between two pizzas
 
 
   App Flow:
