@@ -87,9 +87,29 @@ function Pizza(name, src){
 }
 
 // create a random number to use to display random images
+function getRandomNumber(){
+  return Math.round(Math.random() * Pizza.allPizzasArray.length);
+}
 
 //create function to render the pizzas/add logic to display different images
+function renderPizzas(){
+  let pizza1 = getRandomNumber();
+  let pizza2 = getRandomNumber();
+  console.log(pizza1,pizza2);
 
+  //dont want to show same image twice
+  while(pizza1 === pizza2){
+    pizza2 = getRandomNumber();
+  }
+  //capture some data about images so we can show them and track them
+  //update the 'src' for the new images.
+ 
+  //html element
+  image1.src = Pizza.allPizzasArray[pizza1].src;
+  image2.src = Pizza.allPizzasArray[pizza2].src;
+  console.log(image1,image2);
+
+}
 //add event handler for when we click on the images/ then remove event listener
 
 //render the results of the clicking/voting totals
