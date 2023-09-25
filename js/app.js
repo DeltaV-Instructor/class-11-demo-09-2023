@@ -60,3 +60,50 @@ console.log('app file is connected');
   }
 
 */
+//global vars....
+let pizzaContainer = document.querySelector('section');
+let resultButton = document.querySelector('section + div');
+let image1 = document.querySelector('section img:first-child');
+let image2 = document.querySelector('section img:nth-child(2)');
+console.log({pizzaContainer,resultButton,image1,image2});
+
+let clicks = 0;
+let maxAttemptAllowed = 10;
+console.log(clicks, maxAttemptAllowed);
+Pizza.allPizzasArray = [];
+
+
+//this function will create our pizza objects.
+function Pizza(name, src){
+  this.name = name;
+  this.src = src;
+  this.views = 0;
+  //tracking individual image clicks
+  this.click = 0;
+  //As we create new instances of our pizza objects we can push those into array using the 'this' and the array.push()
+  //built in array method
+  Pizza.allPizzasArray.push(this);
+
+}
+
+// create a random number to use to display random images
+
+//create function to render the pizzas/add logic to display different images
+
+//add event handler for when we click on the images/ then remove event listener
+
+//render the results of the clicking/voting totals
+
+
+
+
+console.log(Pizza.allPizzasArray);
+
+new Pizza('Brick Oven Pizza', 'assets/images/brickOvenPizza.jpg');
+new Pizza('Calzone', 'assets/images/calzonePizza.jpg');
+new Pizza('Chicago Deep Dish', 'assets/images/chicagoPizza.jpg');
+new Pizza('Chicago Pizza and Oven Grinder', 'assets/images/cpoGinderPizza.jpg');
+new Pizza('Detroit Style', 'assets/images/detroitPizza.jpg');
+new Pizza('Papa Vito\'s Thin', 'assets/images/mwDeluxePizzaThinCrust.jpg');
+new Pizza('New York Thin', 'assets/images/newYorkPizza.jpg');
+new Pizza('Shot Gun Dans Pizza', 'assets/images/sgDansHtossedMeatLovPizza.jpg');
