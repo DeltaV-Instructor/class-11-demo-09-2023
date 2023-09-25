@@ -103,11 +103,19 @@ function renderPizzas(){
   }
   //capture some data about images so we can show them and track them
   //update the 'src' for the new images.
- 
+
   //html element
   image1.src = Pizza.allPizzasArray[pizza1].src;
   image2.src = Pizza.allPizzasArray[pizza2].src;
+
+  //get random number use it to update the alt attribute for image that is about to be shown based the name from name of the image object the pizza name.
+  image1.alt = Pizza.allPizzasArray[pizza1].name;
+  image2.alt = Pizza.allPizzasArray[pizza2].name;
   console.log(image1,image2);
+
+  //count the views of the images letting us track the views
+  Pizza.allPizzasArray[pizza1].views++;
+  Pizza.allPizzasArray[pizza2].views++;
 
 }
 //add event handler for when we click on the images/ then remove event listener
